@@ -14,7 +14,7 @@ Help Desk Technician II and aspiring SOC analyst, focused on detection engineeri
 
 | Project | Description | Status |
 |---------|-------------|--------|
-| [Wazuh SOC Home Lab](./wazuh-soc-lab) | End-to-end mini-SOC on Proxmox: Wazuh SIEM, inline Suricata IDS/IPS, pfSense firewall, VirusTotal enrichment, FIM, and Sysmon — detecting an attack from network packet to dashboard alert. | Complete |
+| [Wazuh SOC Home Lab](./wazuh-soc-files/README.md) | End-to-end mini-SOC on Proxmox: Wazuh SIEM, inline Suricata IDS/IPS, pfSense firewall, VirusTotal enrichment, FIM, and Sysmon — detecting an attack from network packet to dashboard alert. | Complete |
 
 More projects coming soon.
 
