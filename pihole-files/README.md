@@ -244,8 +244,6 @@ Because the segmented network from LAB-01 already runs **pfSense as the DHCP ser
 - **Forward to Wazuh** — ship the Pi-hole query log to the LAB-01 Wazuh SIEM, turning DNS activity into searchable, alertable events alongside firewall and endpoint telemetry.
 - **Layered DNS defense** — pfSense controls routing, Pi-hole controls name resolution, a malicious-domain-aware upstream (Quad9) adds a third independent check.
 
-> The Wazuh forwarding is described as a natural next step. Mark it complete only if you've actually wired the query log into Wazuh.
-
 ---
 
 ## Challenges & lessons learned
