@@ -15,6 +15,7 @@ Help Desk Technician II and aspiring SOC analyst, focused on detection engineeri
 | Project | Description | Status |
 |---------|-------------|--------|
 | [Wazuh SOC Home Lab](./wazuh-soc-files/README.md) | End-to-end mini-SOC on Proxmox: Wazuh SIEM, inline Suricata IDS/IPS, pfSense firewall, VirusTotal enrichment, FIM, and Sysmon — detecting an attack from network packet to dashboard alert. | Complete |
+| [SIEM Alerts & Phishing Email Investigation](./phishing-investigation/README.md) | Tier-1 SOC analyst playbook for triaging phishing alerts in a SIEM — alert ownership, email header / static / dynamic IOC analysis, blast-radius assessment, mailbox containment, and case documentation. Distilled from four LetsDefend courses, with the core SOC concepts and common analyst mistakes. | Complete |
 
 More projects coming soon.
 
