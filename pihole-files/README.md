@@ -6,8 +6,6 @@
 
 A network-wide DNS sinkhole. Pi-hole becomes the DNS authority for the whole LAN — every device is pointed at it, and it decides per query whether a domain is allowed to resolve or gets dropped into a sinkhole. Ads and trackers are removed across every device with no client-side software, known malware/phishing domains are refused, and every DNS request the network makes becomes visible in one dashboard.
 
-> **Note:** The upstream (**Cloudflare**), **DNSSEC**, the **primary/secondary DNS** design, and the **blocklists** below reflect the actual build. IPs and the hostname are example values on the LAB-01 network (`192.168.1.0/24`) — swap in the real container IP before publishing.
-
 ---
 
 ## Contents
