@@ -1,7 +1,5 @@
 # Pi-hole Network DNS Sinkhole — LAB-03
 
-> Network-wide ad, tracker, and malware-domain blocking built in an unprivileged LXC container on Proxmox VE.
-
 **Status:** Complete · **Platform:** Proxmox VE · Pi-hole · Ubuntu 22.04 LXC
 
 A network-wide DNS sinkhole. Pi-hole becomes the DNS authority for the whole LAN — every device is pointed at it, and it decides per query whether a domain is allowed to resolve or gets dropped into a sinkhole. Ads and trackers are removed across every device with no client-side software, known malware/phishing domains are refused, and every DNS request the network makes becomes visible in one dashboard.
@@ -105,8 +103,6 @@ For Pi-hole to protect the whole network: it needs a **fixed address** that neve
 
 **Trade-off:** Pi-hole is a single point of failure for DNS, which is why this build adds **Cloudflare as a secondary** resolver — if the container is down, name resolution still works (at the cost of some queries bypassing the filter; see rollout).
 
-> **Static IP is non-negotiable.** A DNS server whose address drifts will silently break name resolution for the entire network the next time it changes.
-
 ---
 
 ## Build
@@ -167,8 +163,6 @@ Devices have to actually *use* Pi-hole. The network-wide way is to change the **
 - **pfSense (LAB-01):** `Services → DHCP Server → LAN` → set **DNS Servers** to `192.168.1.10` (primary) and `1.1.1.1` (secondary) → save.
 - **Home router:** find LAN / DHCP settings and set the DNS servers to the Pi-hole IP (primary) and Cloudflare (secondary).
 - **Per-device (testing):** manually set one device's DNS to the Pi-hole IP before rolling out network-wide.
-
-> **Primary + secondary — the resilience trade-off.** This build hands out two resolvers: Pi-hole (`192.168.1.10`) primary, Cloudflare (`1.1.1.1`) secondary. The benefit is **failover** — DNS keeps working if the container is down. The cost: clients don't strictly prefer the primary, so a share of queries can hit Cloudflare directly and **bypass Pi-hole's filtering and logging**. Running a *second Pi-hole* as secondary would keep redundancy with no bypass; this build favors availability over absolute coverage.
 
 Existing devices cache DNS settings — force the change to validate it:
 
@@ -245,8 +239,6 @@ Because the segmented network from LAB-01 already runs **pfSense as the DHCP ser
 ---
 
 ## Challenges & lessons learned
-
-> These are common Pi-hole-on-Proxmox issues and what they teach. **Replace/expand with the specific ones from your own build.**
 
 1. **Ads still appearing on some devices** — usually a second DNS server reaching the client (a DHCP fallback, or browser-level DNS-over-HTTPS in Chrome/Firefox routing past Pi-hole). Pi-hole must be the *only* resolver the client can reach, and browser DoH should be disabled.
 2. **The static-IP requirement** — if the container pulls a different DHCP address, every device pointed at the old IP loses DNS. Pin a static IP (or reserved lease) and verify gateway/subnet in the LXC network config.
